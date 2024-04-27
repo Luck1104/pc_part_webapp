@@ -19,7 +19,7 @@ class CPU(models.Model):
         Brand,
         help_text = "Choose the company that made this CPU"
     )
-    price = models.FloatField(
+    price = models.DecimalField(
         max_digits = 7,
         decimal_places = 2
     )
@@ -43,7 +43,7 @@ class GPU(models.Model):
         Brand,
         help_text = "Choose the company that made this GPU"
     )
-    price = models.FloatField(
+    price = models.DecimalField(
         max_digits = 7,
         decimal_places = 2
     )
@@ -67,7 +67,7 @@ class Storage(models.Model):
         Brand,
         help_text = "Choose the company that made this storage device"
     )
-    price = models.FloatField(
+    price = models.DecimalField(
         max_digits = 7,
         decimal_places = 2
     )
@@ -82,6 +82,7 @@ class Storage(models.Model):
         ("2", "SSD")
     )
     type = models.CharField(
+        max_length = 3,
         choices = TYPE_CHOICES,
         help_text = ""
     )
@@ -96,7 +97,7 @@ class RAM(models.Model):
         Brand,
         help_text = "Choose the company that made this RAM"
     )
-    price = models.FloatField(
+    price = models.DecimalField(
         max_digits = 7,
         decimal_places = 2
     )
@@ -110,6 +111,7 @@ class RAM(models.Model):
         ("4", "DDR4")
     )
     DDR_type = models.CharField(
+        max_length = 4,
         choices = TYPE_CHOICES,
         help_text = "Choose the type of DDR this RAM is"
     )
