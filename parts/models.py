@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+from django.urls import reverse
 
 # Create your models here.
 
@@ -33,6 +35,9 @@ class CPU(models.Model):
         help_text = "Enter the speed of the cores in megahertz"
     )
 
+    def get_absolute_url(self):
+        return reverse('cpu-detail', args=[str(self.id)])
+
 class GPU(models.Model):
     name = models.CharField(
         max_length = 200,
@@ -56,6 +61,9 @@ class GPU(models.Model):
     core_speed = models.IntegerField(
         help_text = "Enter the speed of the cores in megahertz"
     )
+
+    def get_absolute_url(self):
+        return reverse('gpu-detail', args=[str(self.id)])
 
 class Storage(models.Model):
     name = models.CharField(
@@ -86,6 +94,9 @@ class Storage(models.Model):
         choices = TYPE_CHOICES,
         help_text = ""
     )
+
+    def get_absolute_url(self):
+        return reverse('storage-detail', args=[str(self.id)])
 
 class RAM(models.Model):
     name = models.CharField(
@@ -119,8 +130,14 @@ class RAM(models.Model):
         help_text = "Enter the amount of RAM one stick gives in gigabytes"
     )
 
+    def get_absolute_url(self):
+        return reverse('ram-detail', args=[str(self.id)])
+
 class Build(models.Model):
     cpu = models.ForeignKey('CPU', on_delete=models.SET_NULL, null=True, blank=True)
     gpu = models.ForeignKey('GPU', on_delete=models.SET_NULL, null=True, blank=True)
     storage = models.ForeignKey('Storage', on_delete=models.SET_NULL, null=True, blank=True)
     ram = models.ForeignKey('RAM', on_delete=models.SET_NULL, null=True, blank=True)
+
+    builder = models.ForeignKey(settings.AUTH_USER_MODEL, 
+    on_delete=models.SET_NULL, null=True, blank=True)
