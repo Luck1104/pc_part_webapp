@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 
@@ -32,6 +33,14 @@ class CPU(models.Model):
     core_speed = models.IntegerField(
         help_text = "Enter the speed of the cores in megahertz"
     )
+    class Meta:
+        ordering = ['-name']
+
+    # Methods
+    def get_absolute_url(self):
+        """Returns the URL to access a particular instance of MyModelName."""
+        return reverse('model-detail-view', args=[str(self.id)])
+
 
 class GPU(models.Model):
     name = models.CharField(
@@ -56,6 +65,13 @@ class GPU(models.Model):
     core_speed = models.IntegerField(
         help_text = "Enter the speed of the cores in megahertz"
     )
+    class Meta:
+        ordering = ['-name']
+
+    # Methods
+    def get_absolute_url(self):
+        """Returns the URL to access a particular instance of MyModelName."""
+        return reverse('model-detail-view', args=[str(self.id)])
 
 class Storage(models.Model):
     name = models.CharField(
@@ -86,6 +102,14 @@ class Storage(models.Model):
         choices = TYPE_CHOICES,
         help_text = ""
     )
+    class Meta:
+        ordering = ['-name']
+
+    # Methods
+    def get_absolute_url(self):
+        """Returns the URL to access a particular instance of MyModelName."""
+        return reverse('model-detail-view', args=[str(self.id)])
+
 
 class RAM(models.Model):
     name = models.CharField(
@@ -118,3 +142,10 @@ class RAM(models.Model):
     amount = models.IntegerField(
         help_text = "Enter the amount of RAM one stick gives in gigabytes"
     )
+    class Meta:
+        ordering = ['-name']
+
+    # Methods
+    def get_absolute_url(self):
+        """Returns the URL to access a particular instance of MyModelName."""
+        return reverse('model-detail-view', args=[str(self.id)])
