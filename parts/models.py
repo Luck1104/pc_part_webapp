@@ -118,3 +118,9 @@ class RAM(models.Model):
     amount = models.IntegerField(
         help_text = "Enter the amount of RAM one stick gives in gigabytes"
     )
+
+class Build(models.Model):
+    cpu = models.ForeignKey('CPU', on_delete=models.SET_NULL, null=True, blank=True)
+    gpu = models.ForeignKey('GPU', on_delete=models.SET_NULL, null=True, blank=True)
+    storage = models.ForeignKey('Storage', on_delete=models.SET_NULL, null=True, blank=True)
+    ram = models.ForeignKey('RAM', on_delete=models.SET_NULL, null=True, blank=True)
