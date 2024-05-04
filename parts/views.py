@@ -63,6 +63,10 @@ class BuildCreate(CreateView):
     fields = ['cpu', 'gpu', 'storage', 'ram']
     success_url = reverse_lazy('builds')
 
+    def form_valid(self, form):
+        form.instance.builder = self.request.user
+        return super(BuildCreate, self).form_valid(form)
+
 class BuildUpdate(UpdateView):
     model = Build
     fields = ['cpu', 'gpu', 'storage', 'ram']
