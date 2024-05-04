@@ -9,7 +9,7 @@
       {% for storage in storage_list %}
         <a href="{{ storage.get_absolute_url }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
           <span>{{ storage.name }}</span>
-          <span class="badge bg-primary">{{ storage.brand }}</span>
+          <span class="badge bg-primary">{{storage.brand.all|join:", " }}</span>
         </a>
       {% endfor %}
     </div>

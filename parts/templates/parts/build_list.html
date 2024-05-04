@@ -10,16 +10,16 @@
   <h3>Build {{build.id}}</h3>
   <ul>
     <li>
-      <p><strong>CPU:</strong><a href="{{build.cpu.get_absolute_url}}">{{book.cpu}}</a></p>
+      <p><strong>CPU:</strong><a href="{{build.cpu.get_absolute_url}}">{{build.cpu}}</a></p>
     </li>
     <li>
-      <p><strong>GPU:</strong><a href="{{build.gpu.get_absolute_url}}">{{book.gpu}}</a></p>
+      <p><strong>GPU:</strong><a href="{{build.gpu.get_absolute_url}}">{{build.gpu}}</a></p>
     </li>
     <li>
-      <p><strong>Storage:</strong><a href="{{build.storage.get_absolute_url}}">{{book.storage}}</a></p>
+      <p><strong>Storage:</strong><a href="{{build.storage.get_absolute_url}}">{{build.storage}}</a></p>
     </li>
     <li>
-      <p><strong>RAM:</strong><a href="{{build.ram.get_absolute_url}}">{{book.ram}}</a></p>
+      <p><strong>RAM:</strong><a href="{{build.ram.get_absolute_url}}">{{build.ram}}</a></p>
     </li>
   </ul>
   <a href="{% url 'build-update' build.id %}">Edit</a>

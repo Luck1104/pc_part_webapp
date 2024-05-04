@@ -55,16 +55,18 @@ class BuildsView(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         return (
-            Build.objects.filter(builder=self.request.user)
+            Build.objects.filter(builder=self.request.user).order_by('id')
         )
     
 class BuildCreate(CreateView):
     model = Build
     fields = ['cpu', 'gpu', 'storage', 'ram']
+    success_url = reverse_lazy('builds')
 
 class BuildUpdate(UpdateView):
     model = Build
     fields = ['cpu', 'gpu', 'storage', 'ram']
+    success_url = reverse_lazy('builds')
 
 class BuildDelete(DeleteView):
     model = Build

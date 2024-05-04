@@ -1,7 +1,6 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
-from django.urls import reverse
 
 # Create your models here.
 
@@ -41,8 +40,10 @@ class CPU(models.Model):
 
     # Methods
     def get_absolute_url(self):
-        """Returns the URL to access a particular instance of MyModelName."""
         return reverse('cpu-detail', args=[str(self.id)])
+    
+    def __str__(self):
+        return f'{self.name}'
 
 class GPU(models.Model):
     name = models.CharField(
@@ -72,8 +73,10 @@ class GPU(models.Model):
 
     # Methods
     def get_absolute_url(self):
-        """Returns the URL to access a particular instance of MyModelName."""
-        return reverse('model-detail-view', args=[str(self.id)])
+        return reverse('gpu-detail', args=[str(self.id)])
+    
+    def __str__(self):
+        return f'{self.name}'
 
 class Storage(models.Model):
     name = models.CharField(
@@ -109,8 +112,10 @@ class Storage(models.Model):
 
     # Methods
     def get_absolute_url(self):
-        """Returns the URL to access a particular instance of MyModelName."""
-        return reverse('model-detail-view', args=[str(self.id)])
+        return reverse('storage-detail', args=[str(self.id)])
+    
+    def __str__(self):
+        return f'{self.name}'
 
 class RAM(models.Model):
     name = models.CharField(
@@ -148,8 +153,10 @@ class RAM(models.Model):
 
     # Methods
     def get_absolute_url(self):
-        """Returns the URL to access a particular instance of MyModelName."""
-        return reverse('model-detail-view', args=[str(self.id)])
+        return reverse('ram-detail', args=[str(self.id)])
+    
+    def __str__(self):
+        return f'{self.name}'
 
 class Build(models.Model):
     cpu = models.ForeignKey('CPU', on_delete=models.SET_NULL, null=True, blank=True)
@@ -158,4 +165,11 @@ class Build(models.Model):
     ram = models.ForeignKey('RAM', on_delete=models.SET_NULL, null=True, blank=True)
 
     builder = models.ForeignKey(settings.AUTH_USER_MODEL, 
-    on_delete=models.SET_NULL, null=True, blank=True)
+    on_delete=models.SET_NULL, null=True,)
+
+    # Methods
+    def get_absolute_url(self):
+        return reverse('build-update', args=[str(self.id)])
+    
+    def __str__(self):
+        return f'{self.id}'

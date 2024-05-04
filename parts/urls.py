@@ -3,7 +3,10 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('home/', views.CPUListView.as_view(), name='home'),
+    path('cpu/', views.CPUListView.as_view(), name='cpu-list'),
+    path('gpu/', views.GPUListView.as_view(), name='gpu-list'),
+    path('storage/', views.StorageListView.as_view(), name='storage-list'),
+    path('ram/', views.RAMListView.as_view(), name='ram-list'),
     path('cpu/<int:pk>', views.CPUDetailView.as_view(), name='cpu-detail'),
     path('gpu/<int:pk>', views.GPUDetailView.as_view(), name='gpu-detail'),
     path('storage/<int:pk>', views.StorageDetailView.as_view(), name='storage-detail'),

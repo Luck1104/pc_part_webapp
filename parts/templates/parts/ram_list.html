@@ -9,7 +9,7 @@
       {% for ram in ram_list %}
         <li class="list-group-item d-flex justify-content-between align-items-center">
           <a href="{{ ram.get_absolute_url }}" class="text-decoration-none">{{ ram.name }}</a>
-          <span class="badge bg-primary">{{ ram.brand }}</span>
+          <span class="badge bg-primary">{{ram.brand.all|join:", " }}</span>
         </li>
       {% endfor %}
     </ul>
