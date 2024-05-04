@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1> {{ storage.name }} </h1>
+    <p><strong>Brand:</strong> {{ storage.brand.all|join:", "  }}</p>
+    <p><strong>Price: $</strong> {{ storage.price }}</p>
+    <p><strong>Type: </strong> {{ storage.type }}</p>
+    <p><strong>Memory Amount: </strong> {{ storage.amount_of_space }} Gigabytes</p>
+    <p>According to our ratings, this is the number {{ storage.rank }} storage device we have available!</p>
+{% endblock content %}

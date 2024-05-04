@@ -2,16 +2,16 @@
 
 {% block content %}
   <h1>CPU List</h1>
-  {% if CPU_list %}
+  {% if cpu_list %}
     <ul>
-      {% for book in book_list %}
+      {% for CPU in cpu_list %}
       <li>
         <a href="{{ CPU.get_absolute_url }}">{{ CPU.name }}</a>
-        ({{CPU.brand}})
+        ({{CPU.brand.all|join:", " }})
       </li>
       {% endfor %}
     </ul>
   {% else %}
-    <p>no products currently availible</p>
+    <p>no products currently available</p>
   {% endif %}
 {% endblock %}

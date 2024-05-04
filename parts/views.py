@@ -12,3 +12,15 @@ def index(request):
 
 class CPUListView(generic.ListView):
     model = CPU
+
+class CPUDetailView(generic.DetailView):
+    model = CPU
+
+class GPUDetailView(generic.DetailView):
+    model = GPU
+
+class StorageDetailView(generic.DetailView):
+    model = Storage
+
+class RAMDetailView(generic.DetailView):
+    model = RAM

@@ -9,6 +9,8 @@ class Brand(models.Model):
         unique = True,
         help_text = "Enter the name of the brand"
     )
+    def __str__(self):
+        return self.name
 
 class CPU(models.Model):
     name = models.CharField(
@@ -16,9 +18,8 @@ class CPU(models.Model):
         unique = True,
         help_text = "Enter the name of the CPU"
     )
-    brand = models.ManyToManyField(
-        Brand,
-        help_text = "Choose the company that made this CPU"
+    brand = models.ManyToManyField(Brand,
+        help_text = "Choose the company that made this CPU",
     )
     price = models.DecimalField(
         max_digits = 7,
@@ -39,7 +40,7 @@ class CPU(models.Model):
     # Methods
     def get_absolute_url(self):
         """Returns the URL to access a particular instance of MyModelName."""
-        return reverse('model-detail-view', args=[str(self.id)])
+        return reverse('cpu-detail', args=[str(self.id)])
 
 
 class GPU(models.Model):
