@@ -1,22 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="container mt-4">
-    <h1 class="mb-4">CPU List</h1>
-    
-    {% if CPU_list %}
-      <ul class="list-group">
-        {% for CPU in CPU_list %}
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <a href="{{ CPU.get_absolute_url }}" class="text-decoration-none">{{ CPU.name }}</a>
-            <span class="badge bg-primary">{{ CPU.brand }}</span>
-          </li>
-        {% endfor %}
-      </ul>
-    {% else %}
-      <div class="alert alert-info mt-4" role="alert">
-        No products currently available.
-      </div>
-    {% endif %}
-  </div>
+  <h1>CPU List</h1>
+  {% if cpu_list %}
+    <ul>
+      {% for CPU in cpu_list %}
+      <li>
+        <a href="{{ CPU.get_absolute_url }}">{{ CPU.name }}</a>
+        ({{CPU.brand.all|join:", " }})
+      </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>no products currently available</p>
+  {% endif %}
 {% endblock %}
