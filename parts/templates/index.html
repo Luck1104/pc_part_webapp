@@ -1,1 +1,30 @@
 {% extends "base.html" %}
+{% block title %}
+<title>PC Part Component WebApp</title>
+{% endblock %}
+{% block content %}
+<div class="container border">
+  <h1><strong>PC Conponent Builder</strong></h1>
+  <p>A webapp created by Aiden Rinas, Ben Newland, Isaac Huntington, and Cole Johnson.</p>
+</div>
+<br><br>
+{% if user.is_authenticated %}
+<div class="container border">
+    <h3><a href="{% url 'builds' %}">Check out your builds!</a></h3>
+</div>
+{% else %}
+<div class="container border">
+    <h3>If you're new to this webapp, click <a href="{% url 'register' %}">here.</a></h3>
+    <h3>If you're a returning user, click <a href="{% url 'login' %}?next={{ request.path }}">here.</a></h3>
+</div>
+{% endif %}
+<div class="container border">
+    <h3>Parts</h3>
+    <ul>
+        <li><a href="{% url 'cpu_list' %}">CPUs</a></li>
+        <li><a href="{% url 'gpu_list' %}">GPUs</a></li>
+        <li><a href="{% url 'storage_list' %}">Storage Devices</a></li>
+        <li><a href="{% url 'ram_list' %}">RAM</a></li>
+    </ul>
+</div>
+{% endblock %}
