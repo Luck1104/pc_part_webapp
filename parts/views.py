@@ -28,3 +28,15 @@ class StorageListView(generic.ListView):
     model = Storage
     template_name = 'storage_list'
     paginate_by = 5
+    
+class CPUDetailView(generic.DetailView):
+    model = CPU
+
+class GPUDetailView(generic.DetailView):
+    model = GPU
+
+class StorageDetailView(generic.DetailView):
+    model = Storage
+
+class RAMDetailView(generic.DetailView):
+    model = RAM
