@@ -8,4 +8,8 @@ urlpatterns = [
     path('gpu/<int:pk>', views.GPUDetailView.as_view(), name='gpu-detail'),
     path('storage/<int:pk>', views.StorageDetailView.as_view(), name='storage-detail'),
     path('ram/<int:pk>', views.RAMDetailView.as_view(), name='ram-detail'),
+    path('builds/', views.BuildsView.as_view(), name='builds'),
+    path('builds/create/', views.BuildCreate.as_view(), name='build-create'),
+    path('builds/<int:pk>/update/', views.BuildUpdate.as_view(), name='build-update'),
+    path('builds/<int:pk>/delete/', views.BuildDelete.as_view(), name='build-delete'),
 ]

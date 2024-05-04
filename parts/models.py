@@ -1,4 +1,6 @@
 from django.db import models
+from django.conf import settings
+from django.urls import reverse
 from django.urls import reverse
 
 # Create your models here.
@@ -41,7 +43,6 @@ class CPU(models.Model):
     def get_absolute_url(self):
         """Returns the URL to access a particular instance of MyModelName."""
         return reverse('cpu-detail', args=[str(self.id)])
-
 
 class GPU(models.Model):
     name = models.CharField(
@@ -111,7 +112,6 @@ class Storage(models.Model):
         """Returns the URL to access a particular instance of MyModelName."""
         return reverse('model-detail-view', args=[str(self.id)])
 
-
 class RAM(models.Model):
     name = models.CharField(
         max_length = 200,
@@ -150,3 +150,12 @@ class RAM(models.Model):
     def get_absolute_url(self):
         """Returns the URL to access a particular instance of MyModelName."""
         return reverse('model-detail-view', args=[str(self.id)])
+
+class Build(models.Model):
+    cpu = models.ForeignKey('CPU', on_delete=models.SET_NULL, null=True, blank=True)
+    gpu = models.ForeignKey('GPU', on_delete=models.SET_NULL, null=True, blank=True)
+    storage = models.ForeignKey('Storage', on_delete=models.SET_NULL, null=True, blank=True)
+    ram = models.ForeignKey('RAM', on_delete=models.SET_NULL, null=True, blank=True)
+
+    builder = models.ForeignKey(settings.AUTH_USER_MODEL, 
+    on_delete=models.SET_NULL, null=True, blank=True)

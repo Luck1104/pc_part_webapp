@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% block content %}
+<div>
+  <h1>Your Builds</h1>
+  <hr>
+  
+</div>
+{% if build_list %}
+{% for build in build_list %}
+<div class="container border border-dark">
+  <h3>Build {{build.id}}</h3>
+  <ul>
+    <li>
+      <p><strong>CPU:</strong><a href="{{build.cpu.get_absolute_url}}">{{book.cpu}}</a></p>
+    </li>
+    <li>
+      <p><strong>GPU:</strong><a href="{{build.gpu.get_absolute_url}}">{{book.gpu}}</a></p>
+    </li>
+    <li>
+      <p><strong>Storage:</strong><a href="{{build.storage.get_absolute_url}}">{{book.storage}}</a></p>
+    </li>
+    <li>
+      <p><strong>RAM:</strong><a href="{{build.ram.get_absolute_url}}">{{book.ram}}</a></p>
+    </li>
+  </ul>
+  <a href="{% url 'build-update' build.id %}">Edit</a>
+  <a href="{% url 'build-delete' build.id %}">Delete</a>
+</div>
+{% endfor %}
+{% else %}
+<p>There are no builds currently. Create one with the button below.</p>
+{% endif %}
+
+<a href="{% url 'build-create' %}">New Build</a>
+
+{% endblock %}
