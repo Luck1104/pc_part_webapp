@@ -12,7 +12,23 @@ def index(request):
 
 class CPUListView(generic.ListView):
     model = CPU
+    template_name = 'cpu_list'
+    paginate_by = 5
 
+class RAMListView(generic.ListView):
+    model = RAM
+    template_name = 'ram_list'
+    paginate_by = 5
+
+class GPUListView(generic.ListView):
+    model = GPU
+    template_name = 'gpu_list'
+    paginate_by = 5
+class StorageListView(generic.ListView):
+    model = Storage
+    template_name = 'storage_list'
+    paginate_by = 5
+    
 class CPUDetailView(generic.DetailView):
     model = CPU
 
