@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container">
     <h1> {{ cpu.name }} </h1>
     <p><strong>Brand:</strong> {{ cpu.brand.all|join:", " }}</p>
     <p><strong>Price: $</strong> {{ cpu.price }}</p>
     <p><strong>Number of Cores: </strong> {{ cpu.num_cores }}</p>
     <p><strong>Core Speed: </strong> {{ cpu.core_speed }} MHz</p>
     <p>According to our ratings, this is the number {{ cpu.rank }} CPU we have available!</p>
+</div>
 {% endblock content %}

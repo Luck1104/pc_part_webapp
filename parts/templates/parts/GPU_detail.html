@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container">
     <h1> {{ gpu.name }} </h1>
     <p><strong>Brand:</strong> {{ gpu.brand.all|join:", "  }}</p>
     <p><strong>Price: $</strong> {{ gpu.price }}</p>
     <p><strong>Internal Memory: </strong> {{ gpu.memory }}</p>
     <p><strong>Core Speed: </strong> {{ gpu.core_speed }} MHz</p>
     <p>According to our ratings, this is the number {{ gpu.rank }} GPU we have available!</p>
+</div>
+    
 {% endblock content %}

@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="container">
     <h1> {{ ram.name }} </h1>
     <p><strong>Brand:</strong> {{ ram.brand.name }}</p>
     <p><strong>Price: $</strong> {{ ram.price }}</p>
     <p><strong>DDR Type: </strong> {{ ram.DDR_type }}</p>
     <p><strong>Memory Amount: </strong> {{ ram.amount }} Gigabytes</p>
     <p>According to our ratings, this is the number {{ ram.rank }} RAM we have available!</p>
+</div>
 {% endblock content %}

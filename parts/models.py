@@ -173,3 +173,26 @@ class Build(models.Model):
     
     def __str__(self):
         return f'{self.id}'
+    
+    def total_price(self):
+        if(self.cpu == None):
+            cpu_price = 0
+        else:
+            cpu_price = self.cpu.price
+        
+        if(self.gpu == None):
+            gpu_price = 0
+        else:
+            gpu_price = self.gpu.price
+
+        if(self.storage == None):
+            storage_price = 0
+        else:
+            storage_price = self.storage.price
+
+        if(self.ram == None):
+            ram_price = 0
+        else:
+            ram_price = self.ram.price
+
+        return cpu_price + gpu_price + storage_price + ram_price

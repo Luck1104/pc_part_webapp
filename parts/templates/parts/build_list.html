@@ -1,35 +1,45 @@
 {% extends "base.html" %} {% block content %}
-<div>
+<div class="container mt-3">
   <h1>Your Builds</h1>
   <hr>
   
 </div>
 {% if build_list %}
 {% for build in build_list %}
-<div class="container border border-dark">
+<div class="container border border-dark p-3 mb-3">
   <h3>Build {{build.id}}</h3>
-  <ul>
+  <ul class="big">
     <li>
-      <p><strong>CPU:</strong><a href="{{build.cpu.get_absolute_url}}">{{build.cpu}}</a></p>
+      <p><strong>CPU: </strong><a href="{{build.cpu.get_absolute_url}}">{{build.cpu}}</a></p>
+      <p>Price: ${{build.cpu.price}}</p>
     </li>
     <li>
-      <p><strong>GPU:</strong><a href="{{build.gpu.get_absolute_url}}">{{build.gpu}}</a></p>
+      <p><strong>GPU: </strong><a href="{{build.gpu.get_absolute_url}}">{{build.gpu}}</a></p>
+      <p>Price: ${{build.gpu.price}}</p>
     </li>
     <li>
-      <p><strong>Storage:</strong><a href="{{build.storage.get_absolute_url}}">{{build.storage}}</a></p>
+      <p><strong>Storage: </strong><a href="{{build.storage.get_absolute_url}}">{{build.storage}}</a></p>
+      <p>Price: ${{build.storage.price}}</p>
     </li>
     <li>
-      <p><strong>RAM:</strong><a href="{{build.ram.get_absolute_url}}">{{build.ram}}</a></p>
+      <p><strong>RAM: </strong><a href="{{build.ram.get_absolute_url}}">{{build.ram}}</a></p>
+      <p>Price: ${{build.ram.price}}</p>
+    </li>
+    <li>
+      <p><strong>TOTAL PRICE: </strong>${{build.total_price}}</p>
     </li>
   </ul>
-  <a href="{% url 'build-update' build.id %}">Edit</a>
-  <a href="{% url 'build-delete' build.id %}">Delete</a>
+  <a class="btn btn-secondary" href="{% url 'build-update' build.id %}">Edit</a>
+  <a class="btn btn-danger" href="{% url 'build-delete' build.id %}">Delete</a>
 </div>
 {% endfor %}
 {% else %}
 <p>There are no builds currently. Create one with the button below.</p>
 {% endif %}
 
-<a href="{% url 'build-create' %}">New Build</a>
+<div class="container mt-5 mb-5">
+  <a class="btn btn-primary" href="{% url 'build-create' %}">New Build</a>
+</div>
+
 
 {% endblock %}
