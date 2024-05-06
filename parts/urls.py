@@ -1,8 +1,10 @@
 from django.urls import path
 from . import views
+from django.views.generic import RedirectView
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('home/', views.index, name='index'),
+    path('', RedirectView.as_view(url='home/', permanent=True)),
     path('cpu/', views.CPUListView.as_view(), name='cpu-list'),
     path('gpu/', views.GPUListView.as_view(), name='gpu-list'),
     path('storage/', views.StorageListView.as_view(), name='storage-list'),
